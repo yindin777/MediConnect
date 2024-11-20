@@ -1,14 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Simple App</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediConnect - Healthcare Appointment Service</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Welcome to My Simple App</h1>
-  <p>This is a basic static app.</p>
-  <script src="script.js"></script>
+
+    <!-- Header Section -->
+    <header>
+        <h1>MediConnect</h1>
+        <p>Your reliable healthcare appointment reminder and booking service</p>
+    </header>
+
+    <!-- AI Chat Box (floating) -->
+    <div class="chat-box">
+        <h3>AI Chat</h3>
+        <p>Ask me about available slots or book your appointment!</p>
+        <input type="text" placeholder="Start chatting...">
+    </div>
+
+    <!-- Emergency Slots Section (half screen) -->
+    <section class="slots">
+        <h2>Available Emergency Slots</h2>
+        <div class="slot-list">
+            <div class="slot-item">
+                <p><strong>Dr. John Doe</strong> - Dentist</p>
+                <p>Available: <span class="slot-time">12:30 PM</span></p>
+                <button>Book Now</button>
+            </div>
+            <div class="slot-item">
+                <p><strong>Dr. Jane Smith</strong> - Psychologist</p>
+                <p>Available: <span class="slot-time">2:00 PM</span></p>
+                <button>Book Now</button>
+            </div>
+            <!-- More slots will go here -->
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>Contact us at: info@mediconnect.com</p>
+        <p>&copy; 2024 MediConnect</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
