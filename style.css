@@ -1,35 +1,35 @@
-/* Basic Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* Layout */
+/* General Styles */
 body {
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
 }
 
 header {
   display: flex;
   justify-content: space-between;
-  padding: 20px;
-  background-color: #007BFF;
+  padding: 10px 20px;
+  background-color: #007bff;
   color: white;
+  align-items: center;
 }
 
-header .logo h1 {
-  font-size: 2em;
+header .logo img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
 }
 
 header nav ul {
   list-style-type: none;
+  padding: 0;
   display: flex;
+  gap: 20px;
 }
 
 header nav ul li {
-  margin: 0 10px;
+  display: inline;
 }
 
 header nav ul li a {
@@ -38,88 +38,48 @@ header nav ul li a {
   font-weight: bold;
 }
 
-section {
-  padding: 20px;
-  margin-top: 20px;
-}
-
-.chatbox, .results, .map {
-  margin-bottom: 20px;
-}
-
-/* Chatbox Styling */
-.chatbox {
-  background-color: #fff;
-  border-radius: 8px;
+.content {
+  display: flex;
+  justify-content: space-between;
   padding: 20px;
 }
 
-.chatbox textarea {
+.ai-assistant, .results {
+  width: 30%;
+}
+
+.map-container {
   width: 100%;
-  height: 150px;
-  padding: 10px;
-  margin-bottom: 10px;
+  height: 400px;  /* 20% bigger size */
 }
 
-.chatbox button {
-  background-color: #007BFF;
-  color: white;
+.voice-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #ff0000;
   border: none;
-  padding: 10px;
+  border-radius: 50%;
+  padding: 15px;
   cursor: pointer;
 }
 
-.chatbox button:hover {
-  background-color: #0056b3;
+.voice-button img {
+  width: 30px;
+  height: 30px;
 }
 
-/* Results List */
-.results-list {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.result-item {
-  background-color: #fff;
-  padding: 15px;
-  margin: 10px;
-  width: calc(33% - 20px);
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.result-item h3 {
-  margin-bottom: 10px;
-}
-
-.result-item p {
-  margin: 5px 0;
-}
-
-/* Map */
-#map {
-  width: 100%;
-  height: 300px;
-  background-color: #e1e1e1;
-  border-radius: 8px;
-}
-
-/* Media Queries */
+/* Responsive Design */
 @media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  header nav ul {
+  .content {
     flex-direction: column;
   }
 
-  .result-item {
+  .ai-assistant, .results {
     width: 100%;
   }
 
-  #map {
-    height: 200px;
+  .map-container {
+    height: 300px;
   }
 }
