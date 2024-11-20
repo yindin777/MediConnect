@@ -44,14 +44,13 @@ header nav ul li a {
 }
 
 .content {
-  display: flex;
-  justify-content: space-between;
   padding: 20px;
-  flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;
 }
 
 .ai-assistant, .results {
-  width: 48%; /* Adjust width for responsiveness */
+  width: 100%; /* Full width */
   margin-bottom: 20px;
 }
 
