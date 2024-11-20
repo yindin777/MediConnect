@@ -3,39 +3,62 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mediconnect - Healthcare Appointment Booking</title>
+  <title>Mediconnect</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>Welcome to Mediconnect</h1>
-      <p>Connecting you to the best healthcare professionals.</p>
-    </header>
+  <!-- Navigation Menu -->
+  <header>
+    <div class="logo">
+      <h1>Mediconnect</h1>
+      <p>Your healthcare, connected</p>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <section class="search-box">
-      <input type="text" id="search-city" placeholder="Search for doctors, dentists, or healthcare providers">
-      <button id="search-btn">Search</button>
-    </section>
-
-    <section class="emergency-slots">
-      <h2>Available Emergency Slots</h2>
-      <div id="slots-container">
-        <!-- Emergency slots will be populated here -->
+  <!-- Main Chat Box Section (AI Assistant) -->
+  <section class="chatbox">
+    <div class="chat-container">
+      <h2>AI Assistant</h2>
+      <p>Find available healthcare professionals near you</p>
+      <div class="chatbox-content">
+        <!-- You can integrate a real-time AI assistant here -->
+        <textarea placeholder="Ask about available professionals..."></textarea>
+        <button>Search</button>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="chat-box">
-      <h2>Talk to an AI Assistant</h2>
-      <div id="ai-chat-box">
-        <!-- AI chat interface here -->
+  <!-- Emergency Professionals' Results Section -->
+  <section class="results">
+    <h2>Available Professionals</h2>
+    <div class="results-list">
+      <!-- Example results, this can be dynamically populated -->
+      <div class="result-item">
+        <h3>Dr. John Doe - Dentist</h3>
+        <p>Available in 15 mins</p>
+        <p>Address: 123 Health St, City</p>
       </div>
-    </section>
+      <!-- More results here -->
+    </div>
+  </section>
 
-    <footer>
-      <p>&copy; 2024 Mediconnect</p>
-    </footer>
-  </div>
+  <!-- Map Section for Location and Slot Availability -->
+  <section class="map">
+    <h2>Map of Available Slots</h2>
+    <div id="map"></div> <!-- Leaflet Map will go here -->
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 Mediconnect. All rights reserved.</p>
+  </footer>
 
   <script src="script.js"></script>
 </body>
