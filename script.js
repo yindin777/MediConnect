@@ -1,27 +1,12 @@
-// Dummy data for emergency slots
-const emergencySlots = [
-  { name: 'Dr. Smith - Dentist', time: '10:00 AM', location: 'New York, NY' },
-  { name: 'Dr. Johnson - General Practitioner', time: '10:30 AM', location: 'Brooklyn, NY' },
-  { name: 'Dr. Lee - Chiropractor', time: '11:00 AM', location: 'Queens, NY' },
-];
+// Leaflet.js initialization for the map
+const map = L.map('map').setView([40.7128, -74.0060], 13); // Example coordinates
 
-// Function to populate emergency slots
-const populateSlots = () => {
-  const slotsContainer = document.getElementById('slots-container');
-  emergencySlots.forEach(slot => {
-    const slotCard = document.createElement('div');
-    slotCard.classList.add('slot-card');
-    slotCard.innerHTML = `
-      <h3>${slot.name}</h3>
-      <p>${slot.time}</p>
-      <p>${slot.location}</p>
-    `;
-    slotsContainer.appendChild(slotCard);
-  });
-};
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '© OpenStreetMap contributors'
+}).addTo(map);
 
-// Call the function to populate the slots
-populateSlots();
+// Add markers dynamically based on available slots
+// For now, using static markers as placeholders
 
-// Placeholder for AI chat functionality
-document.getElementById('ai-chat-box').innerHTML = 'AI Assistant is ready to help!';
+L.marker([40.7128, -74.0060]).addTo(map).bindPopup('Available in 1 hour');
+L.marker([40.715, -74.010]).addTo(map).bindPopup('Available in 15 minutes');
