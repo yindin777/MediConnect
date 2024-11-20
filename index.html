@@ -1,50 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MediConnect - Healthcare Appointment Service</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mediconnect - Healthcare Appointment Booking</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <!-- Header Section -->
+  <div class="container">
     <header>
-        <h1>MediConnect</h1>
-        <p>Your reliable healthcare appointment reminder and booking service</p>
+      <h1>Welcome to Mediconnect</h1>
+      <p>Connecting you to the best healthcare professionals.</p>
     </header>
 
-    <!-- AI Chat Box (floating) -->
-    <div class="chat-box">
-        <h3>AI Chat</h3>
-        <p>Ask me about available slots or book your appointment!</p>
-        <input type="text" placeholder="Start chatting...">
-    </div>
-
-    <!-- Emergency Slots Section (half screen) -->
-    <section class="slots">
-        <h2>Available Emergency Slots</h2>
-        <div class="slot-list">
-            <div class="slot-item">
-                <p><strong>Dr. John Doe</strong> - Dentist</p>
-                <p>Available: <span class="slot-time">12:30 PM</span></p>
-                <button>Book Now</button>
-            </div>
-            <div class="slot-item">
-                <p><strong>Dr. Jane Smith</strong> - Psychologist</p>
-                <p>Available: <span class="slot-time">2:00 PM</span></p>
-                <button>Book Now</button>
-            </div>
-            <!-- More slots will go here -->
-        </div>
+    <section class="search-box">
+      <input type="text" id="search-city" placeholder="Search for doctors, dentists, or healthcare providers">
+      <button id="search-btn">Search</button>
     </section>
 
-    <!-- Footer Section -->
-    <footer>
-        <p>Contact us at: info@mediconnect.com</p>
-        <p>&copy; 2024 MediConnect</p>
-    </footer>
+    <section class="emergency-slots">
+      <h2>Available Emergency Slots</h2>
+      <div id="slots-container">
+        <!-- Emergency slots will be populated here -->
+      </div>
+    </section>
 
-    <script src="script.js"></script>
+    <section class="chat-box">
+      <h2>Talk to an AI Assistant</h2>
+      <div id="ai-chat-box">
+        <!-- AI chat interface here -->
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2024 Mediconnect</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
