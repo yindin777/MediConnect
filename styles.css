@@ -1,15 +1,38 @@
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
+/* Enhanced Responsive Styles */
+@media (max-width: 640px) {
+    body {
+        font-size: 14px;
+    }
+
+    .container {
+        padding: 0.5rem;
+    }
+
+    .chat-container {
+        max-height: 300px;
+    }
 }
 
-header {
-    background-color: #4CAF50;
-    color: white;
-    padding: 1em;
-    text-align: center;
+/* Touch-friendly interactions */
+@media (hover: hover) {
+    button:hover {
+        opacity: 0.9;
+    }
 }
 
-#map-section {
-    width: 100%;
+/* Accessibility and Touch Improvements */
+button, input, a {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Responsive Typography */
+html {
+    font-size: 16px;
+}
+
+@media screen and (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
 }
