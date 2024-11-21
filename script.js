@@ -1,12 +1,66 @@
-// Leaflet.js initialization for the map
-const map = L.map('map').setView([40.7128, -74.0060], 13); // Example coordinates
+const API_URL = "https://your-api-endpoint.com";  // Set the URL of your API endpoint (Whereis Worker API)
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '© OpenStreetMap contributors'
-}).addTo(map);
+// Handle form submission and data interaction with the D1 database
+addEventListener('fetch', event => {
+  event.respondWith(handleRequest(event.request))
+})
 
-// Add markers dynamically based on available slots
-// For now, using static markers as placeholders
+async function handleRequest(request) {
+  const url = new URL(request.url)
 
-L.marker([40.7128, -74.0060]).addTo(map).bindPopup('Available in 1 hour');
-L.marker([40.715, -74.010]).addTo(map).bindPopup('Available in 15 minutes');
+  // Serve the front-end assets
+  if (url.pathname === "/") {
+    return await serveStaticHTML();
+  }
+
+  // Handle API endpoint for available slots
+  if (url.pathname === "/getAvailableSlots") {
+    return await getAvailableSlots();
+  }
+
+  // Handle API for booking appointment
+  if (url.pathname === "/bookAppointment") {
+    return await bookAppointment(request);
+  }
+
+  return new Response("Not Found", { status: 404 });
+}
+
+async function serveStaticHTML() {
+  const html = await fetch("https://raw.githubusercontent.com/yindin777/Whereis/main/index.html");
+  const htmlText = await html.text();
+  return new Response(htmlText, {
+    headers: { 'Content-Type': 'text/html; charset=utf-8' }
+  });
+}
+
+async function getAvailableSlots() {
+  const slots = await fetchSlotsFromD1Database();
+  return new Response(JSON.stringify(slots), {
+    headers: { 'Content-Type': 'application/json' }
+  });
+}
+
+async function fetchSlotsFromD1Database() {
+  // Connect to D1 database and get available slots (example code, adjust according to your D1 schema)
+  const result = await fetch(API_URL + "/slots");  // Example endpoint
+  const slots = await result.json();
+  return slots;
+}
+
+async function bookAppointment(request) {
+  const requestBody = await request.json();
+  const { name, appointmentDate } = requestBody;
+
+  // Save appointment data to the D1 database
+  const result = await fetch(API_URL + "/book", {
+    method: "POST",
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name, appointmentDate })
+  });
+
+  const response = await result.json();
+  return new Response(JSON.stringify(response), {
+    headers: { 'Content-Type': 'application/json' }
+  });
+}
