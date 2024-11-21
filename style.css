@@ -8,6 +8,7 @@ body {
     height: 100vh;
 }
 
+/* Top Menu */
 #menu {
     background-color: #333;
     padding: 10px 0;
@@ -35,10 +36,10 @@ body {
     padding: 5px 10px;
 }
 
+/* Container for layout */
 #container {
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
     height: 100%;
 }
 
@@ -49,11 +50,6 @@ body {
     background-color: #f4f4f4;
     border-bottom: 2px solid #ccc;
     overflow-y: auto;
-}
-
-#chat-box {
-    height: 80%;
-    overflow-y: scroll;
 }
 
 /* Map Section (40%) */
