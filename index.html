@@ -3,46 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Healthcare Map</title>
-    <link rel="stylesheet" href="styles.css">
-    <!-- Include Leaflet.js (for OpenStreetMap) -->
+    <title>WhereIs - Find Available Slots</title>
+
+    <!-- Add Leaflet.js for OpenStreetMap -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <!-- Add Leaflet Control Geocoder for location search -->
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
+    <!-- Your custom CSS for map and layout -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <!-- Menu Bar -->
-    <div id="menu">
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#profile">Profile</a></li>
-            <li><a href="#appointments">Appointments</a></li>
-        </ul>
-    </div>
-
-    <!-- Layout Container -->
-    <div id="container">
-        <!-- AI Chat Section -->
-        <div id="ai-chat">
-            <h2>AI Search Assistant</h2>
-            <p>Your AI assistant will be here...</p>
-        </div>
-
-        <!-- Map Section -->
-        <div id="map-container">
-            <div id="map"></div>
-        </div>
-
-        <!-- Healthcare Professionals Profiles -->
-        <div id="profiles">
-            <h3>Available Healthcare Professionals</h3>
-            <ul id="professional-list">
-                <!-- List of Healthcare Professionals will be inserted dynamically here -->
-            </ul>
+    <!-- Minimalist Navbar -->
+    <div class="navbar">
+        <div class="logo">WhereIs</div>
+        <div class="menu">
+            <a href="#home">Home</a>
+            <a href="#profile">Profile</a>
+            <a href="#appointments">Appointments</a>
         </div>
     </div>
 
-    <!-- Include Custom Script -->
+    <!-- Map Container -->
+    <div id="map"></div>
+
+    <!-- Optional: Add your custom JavaScript here -->
     <script src="script.js"></script>
 </body>
 </html>
