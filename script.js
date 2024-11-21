@@ -1,66 +1,29 @@
-const API_URL = "https://your-api-endpoint.com";  // Set the URL of your API endpoint (Whereis Worker API)
+import { serve } from '@cloudflare/workers-toolkit';
 
-// Handle form submission and data interaction with the D1 database
-addEventListener('fetch', event => {
-  event.respondWith(handleRequest(event.request))
-})
+// Example endpoint to fetch available slots from D1 database
+const getAvailableSlots = async (date) => {
+    const d1 = D1Database; // Use your D1 database connection here
+    const query = `SELECT * FROM slots WHERE date = ?`; // Modify query to suit your table structure
+    const result = await d1.prepare(query).bind(date).first();
+    return result.rows;
+};
 
-async function handleRequest(request) {
-  const url = new URL(request.url)
+// Define Worker route to handle request for available slots
+serve(async (req) => {
+    if (req.method === 'GET') {
+        const url = new URL(req.url);
+        const date = url.searchParams.get('date'); // Assuming date query param
 
-  // Serve the front-end assets
-  if (url.pathname === "/") {
-    return await serveStaticHTML();
-  }
+        // Return available slots as JSON
+        if (date) {
+            const slots = await getAvailableSlots(date);
+            return new Response(JSON.stringify(slots), {
+                headers: { 'Content-Type': 'application/json' },
+            });
+        }
 
-  // Handle API endpoint for available slots
-  if (url.pathname === "/getAvailableSlots") {
-    return await getAvailableSlots();
-  }
+        return new Response('Please provide a date', { status: 400 });
+    }
 
-  // Handle API for booking appointment
-  if (url.pathname === "/bookAppointment") {
-    return await bookAppointment(request);
-  }
-
-  return new Response("Not Found", { status: 404 });
-}
-
-async function serveStaticHTML() {
-  const html = await fetch("https://raw.githubusercontent.com/yindin777/Whereis/main/index.html");
-  const htmlText = await html.text();
-  return new Response(htmlText, {
-    headers: { 'Content-Type': 'text/html; charset=utf-8' }
-  });
-}
-
-async function getAvailableSlots() {
-  const slots = await fetchSlotsFromD1Database();
-  return new Response(JSON.stringify(slots), {
-    headers: { 'Content-Type': 'application/json' }
-  });
-}
-
-async function fetchSlotsFromD1Database() {
-  // Connect to D1 database and get available slots (example code, adjust according to your D1 schema)
-  const result = await fetch(API_URL + "/slots");  // Example endpoint
-  const slots = await result.json();
-  return slots;
-}
-
-async function bookAppointment(request) {
-  const requestBody = await request.json();
-  const { name, appointmentDate } = requestBody;
-
-  // Save appointment data to the D1 database
-  const result = await fetch(API_URL + "/book", {
-    method: "POST",
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name, appointmentDate })
-  });
-
-  const response = await result.json();
-  return new Response(JSON.stringify(response), {
-    headers: { 'Content-Type': 'application/json' }
-  });
-}
+    return new Response('Method Not Allowed', { status: 405 });
+});
