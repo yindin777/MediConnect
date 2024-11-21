@@ -7,6 +7,8 @@
   </script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css">
+  <script src="index.js"></script>
   <style>
    body {
             font-family: 'Roboto', sans-serif;
@@ -39,12 +41,12 @@
      </ul>
     </nav>
    </header>
-   <div class="flex flex-col space-y-4">
-    <div class="bg-white p-4 rounded-lg shadow-md">
+   <div class="flex flex-col md:flex-row">
+    <div class="w-full md:w-1/3 bg-white p-4 rounded-lg shadow-md mb-4 md:mb-0">
      <h2 class="text-xl font-semibold mb-4">
       AI Assistant
      </h2>
-     <div class="border p-4 rounded-lg h-64 overflow-y-auto">
+     <div class="border p-4 rounded-lg h-96 overflow-y-auto">
       <div class="mb-4">
        <p class="text-gray-700">
         Hello! How can I assist you today?
@@ -68,75 +70,77 @@
       </button>
      </div>
     </div>
-    <div class="bg-white p-4 rounded-lg shadow-md">
-     <h2 class="text-xl font-semibold mb-4">
-      Nearest Doctors
-     </h2>
-     <div class="space-y-4">
-      <div class="flex items-center p-4 border rounded-lg">
-       <img alt="Portrait of Dr. John Doe, a middle-aged male doctor with glasses and a white coat" class="w-16 h-16 rounded-full mr-4" height="100" src="https://storage.googleapis.com/a1aa/image/TqpCfhorItV4RqaQewrFGnSRSqSVAd60GU2KXshsboz2cKzTA.jpg" width="100"/>
-       <div>
-        <h3 class="text-lg font-semibold">
-         Dr. John Doe
-        </h3>
-        <p class="text-gray-700">
-         Cardiologist
-        </p>
-        <p class="text-gray-500">
-         2 miles away
-        </p>
+    <div class="w-full md:w-2/3 md:pl-4">
+     <div class="bg-white p-4 rounded-lg shadow-md mb-4">
+      <h2 class="text-xl font-semibold mb-4">
+       Nearest Doctors
+      </h2>
+      <div class="space-y-4">
+       <div class="flex items-center p-4 border rounded-lg">
+        <img alt="Portrait of Dr. John Doe, a middle-aged male doctor with glasses and a white coat" class="w-16 h-16 rounded-full mr-4" height="100" src="https://storage.googleapis.com/a1aa/image/tYCBy0ZITZLgDd0MuAbLi3OV61GjeUOGl1Yv46Ve976Y0KzTA.jpg" width="100"/>
+        <div>
+         <h3 class="text-lg font-semibold">
+          Dr. John Doe
+         </h3>
+         <p class="text-gray-700">
+          Cardiologist
+         </p>
+         <p class="text-gray-500">
+          2 miles away
+         </p>
+        </div>
        </div>
-      </div>
-      <div class="flex items-center p-4 border rounded-lg">
-       <img alt="Portrait of Dr. Jane Smith, a young female doctor with a friendly smile and a white coat" class="w-16 h-16 rounded-full mr-4" height="100" src="https://storage.googleapis.com/a1aa/image/SPivkVfYNVxYCKrPeyXR8nHvwoMJLcJn9iNCO4FjLuB4cKzTA.jpg" width="100"/>
-       <div>
-        <h3 class="text-lg font-semibold">
-         Dr. Jane Smith
-        </h3>
-        <p class="text-gray-700">
-         Dermatologist
-        </p>
-        <p class="text-gray-500">
-         3 miles away
-        </p>
+       <div class="flex items-center p-4 border rounded-lg">
+        <img alt="Portrait of Dr. Jane Smith, a young female doctor with a friendly smile and a white coat" class="w-16 h-16 rounded-full mr-4" height="100" src="https://storage.googleapis.com/a1aa/image/7YjHsOiQRWpfbq599FEiBtOLQxxe0EfdYWPg93hAFqYroVmnA.jpg" width="100"/>
+        <div>
+         <h3 class="text-lg font-semibold">
+          Dr. Jane Smith
+         </h3>
+         <p class="text-gray-700">
+          Dermatologist
+         </p>
+         <p class="text-gray-500">
+          3 miles away
+         </p>
+        </div>
        </div>
-      </div>
-      <div class="flex items-center p-4 border rounded-lg">
-       <img alt="Portrait of Dr. Emily Johnson, a middle-aged female doctor with curly hair and a white coat" class="w-16 h-16 rounded-full mr-4" height="100" src="https://storage.googleapis.com/a1aa/image/t0Eq6yE1VeRXSSwBstZ7iNdFLtWI9kLd6RkwjtnCVWnbOl5JA.jpg" width="100"/>
-       <div>
-        <h3 class="text-lg font-semibold">
-         Dr. Emily Johnson
-        </h3>
-        <p class="text-gray-700">
-         Pediatrician
-        </p>
-        <p class="text-gray-500">
-         4 miles away
-        </p>
+       <div class="flex items-center p-4 border rounded-lg">
+        <img alt="Portrait of Dr. Emily Johnson, a middle-aged female doctor with curly hair and a white coat" class="w-16 h-16 rounded-full mr-4" height="100" src="https://storage.googleapis.com/a1aa/image/yPVyqGrXB0ZRNFAnOlDv0ktRcttxhglZIkupVIGJq5yFty8E.jpg" width="100"/>
+        <div>
+         <h3 class="text-lg font-semibold">
+          Dr. Emily Johnson
+         </h3>
+         <p class="text-gray-700">
+          Pediatrician
+         </p>
+         <p class="text-gray-500">
+          4 miles away
+         </p>
+        </div>
        </div>
-      </div>
-      <div class="flex items-center p-4 border rounded-lg">
-       <img alt="Portrait of Dr. Michael Brown, a young male doctor with a stethoscope and a white coat" class="w-16 h-16 rounded-full mr-4" height="100" src="https://storage.googleapis.com/a1aa/image/LOivIaey7gQyVaFwZUZhgERe5HutxzePaJHF2We4vTuozpMPB.jpg" width="100"/>
-       <div>
-        <h3 class="text-lg font-semibold">
-         Dr. Michael Brown
-        </h3>
-        <p class="text-gray-700">
-         General Practitioner
-        </p>
-        <p class="text-gray-500">
-         5 miles away
-        </p>
+       <div class="flex items-center p-4 border rounded-lg">
+        <img alt="Portrait of Dr. Michael Brown, a young male doctor with a stethoscope and a white coat" class="w-16 h-16 rounded-full mr-4" height="100" src="https://storage.googleapis.com/a1aa/image/efdFe3i3FZPfITIcBZSp7HGhqJgUW0gPHTeCeQHdHNMHFty8E.jpg" width="100"/>
+        <div>
+         <h3 class="text-lg font-semibold">
+          Dr. Michael Brown
+         </h3>
+         <p class="text-gray-700">
+          General Practitioner
+         </p>
+         <p class="text-gray-500">
+          5 miles away
+         </p>
+        </div>
        </div>
       </div>
      </div>
-    </div>
-    <div class="bg-white p-4 rounded-lg shadow-md">
-     <h2 class="text-xl font-semibold mb-4">
-      Map
-     </h2>
-     <div class="h-96 bg-gray-200 rounded-lg">
-      <img alt="Map showing the locations of nearby doctors" class="w-full h-full object-cover rounded-lg" height="400" src="https://storage.googleapis.com/a1aa/image/ZxnBvYR25VaYB19DNOQgeslXXOtFBWrY0fRURx97dCv0cKzTA.jpg" width="600"/>
+     <div class="bg-white p-4 rounded-lg shadow-md">
+      <h2 class="text-xl font-semibold mb-4">
+       Map
+      </h2>
+      <div class="h-96 bg-gray-200 rounded-lg">
+       <img alt="Map showing the locations of nearby doctors" class="w-full h-full object-cover rounded-lg" height="400" src="https://storage.googleapis.com/a1aa/image/HDfLLs5ewbsS0kzb1ilw3pz9N5zotLB58G74beLYOZ3loVmnA.jpg" width="600"/>
+      </div>
      </div>
     </div>
    </div>
