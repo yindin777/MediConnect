@@ -1,149 +1,79 @@
-<html>
- <head>
-  <title>
-   Doctor Appointment Booking
-  </title>
-  <script src="https://cdn.tailwindcss.com">
-  </script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="styles.css">
-  <script src="index.js"></script>
-  <style>
-   body {
-            font-family: 'Roboto', sans-serif;
-        }
-  </style>
- </head>
- <body class="bg-gray-100">
-  <div class="container mx-auto p-4">
-   <header class="flex justify-between items-center py-4">
-    <h1 class="text-2xl font-bold">
-     Doctor Appointment Booking
-    </h1>
-    <nav>
-     <ul class="flex space-x-4">
-      <li>
-       <a class="text-gray-700 hover:text-gray-900" href="#">
-        Home
-       </a>
-      </li>
-      <li>
-       <a class="text-gray-700 hover:text-gray-900" href="#">
-        About
-       </a>
-      </li>
-      <li>
-       <a class="text-gray-700 hover:text-gray-900" href="#">
-        Contact
-       </a>
-      </li>
-     </ul>
-    </nav>
-   </header>
-   <div class="flex flex-col md:flex-row">
-    <div class="w-full md:w-1/3 bg-white p-4 rounded-lg shadow-md mb-4 md:mb-0">
-     <h2 class="text-xl font-semibold mb-4">
-      AI Assistant
-     </h2>
-     <div class="border p-4 rounded-lg h-96 overflow-y-auto">
-      <div class="mb-4">
-       <p class="text-gray-700">
-        Hello! How can I assist you today?
-       </p>
-      </div>
-      <div class="mb-4">
-       <p class="text-gray-700">
-        I need to book an appointment with a doctor nearby.
-       </p>
-      </div>
-      <div class="mb-4">
-       <p class="text-gray-700">
-        Sure, let me find the nearest doctors for you.
-       </p>
-      </div>
-     </div>
-     <div class="mt-4">
-      <input class="w-full p-2 border rounded-lg" placeholder="Type your message..." type="text"/>
-      <button class="w-full mt-2 bg-blue-500 text-white p-2 rounded-lg">
-       Send
-      </button>
-     </div>
+<head>
+    <!-- Viewport meta tag for proper mobile rendering -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Mobile-specific optimizations -->
+    <meta name="theme-color" content="#2563eb">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>
+
+<body class="bg-gray-100 min-h-screen flex flex-col">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex-grow">
+        <!-- Existing content with enhanced responsive classes -->
+        <header class="flex flex-col sm:flex-row justify-between items-center py-4 space-y-4 sm:space-y-0">
+            <h1 class="text-xl sm:text-2xl font-bold text-center sm:text-left w-full">
+                Doctor Appointment Booking
+            </h1>
+            <nav class="w-full sm:w-auto">
+                <ul class="flex justify-center sm:justify-end space-x-4">
+                    <!-- Navigation items -->
+                </ul>
+            </nav>
+        </header>
+
+        <div class="flex flex-col lg:flex-row gap-4">
+            <!-- AI Assistant Section -->
+            <div class="w-full lg:w-1/3 bg-white p-4 rounded-lg shadow-md">
+                <div class="chat-container h-64 sm:h-96 overflow-y-auto">
+                    <!-- Chat messages -->
+                </div>
+                <div class="mt-4 flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
+                    <input 
+                        class="flex-grow p-2 border rounded-lg" 
+                        placeholder="Type your message..." 
+                        type="text" 
+                        id="user-input"
+                    />
+                    <button 
+                        class="w-full sm:w-auto bg-blue-500 text-white p-2 rounded-lg" 
+                        id="send-button">
+                        Send
+                    </button>
+                </div>
+            </div>
+
+            <!-- Doctors and Map Section -->
+            <div class="w-full lg:w-2/3 space-y-4">
+                <!-- Doctors List with responsive cards -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
+                    <!-- Doctor cards with responsive layout -->
+                    <div class="flex items-center p-4 border rounded-lg">
+                        <img 
+                            class="w-12 h-12 sm:w-16 sm:h-16 rounded-full mr-4" 
+                            src="doctor-image.jpg" 
+                            alt="Doctor"
+                        />
+                        <div>
+                            <h3 class="text-base sm:text-lg font-semibold">Dr. Name</h3>
+                            <p class="text-sm text-gray-700">Specialization</p>
+                        </div>
+                    </div>
+                    <!-- More doctor cards -->
+                </div>
+
+                <!-- Responsive Map Section -->
+                <div class="bg-white p-4 rounded-lg shadow-md">
+                    <div class="h-64 sm:h-96 bg-gray-200 rounded-lg">
+                        <img 
+                            class="w-full h-full object-cover rounded-lg" 
+                            src="map-image.jpg" 
+                            alt="Location Map"
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="w-full md:w-2/3 md:pl-4">
-     <div class="bg-white p-4 rounded-lg shadow-md mb-4">
-      <h2 class="text-xl font-semibold mb-4">
-       Nearest Doctors
-      </h2>
-      <div class="space-y-4">
-       <div class="flex items-center p-4 border rounded-lg">
-        <img alt="Portrait of Dr. John Doe, a middle-aged male doctor with glasses and a white coat" class="w-16 h-16 rounded-full mr-4" height="100" src="https://storage.googleapis.com/a1aa/image/tYCBy0ZITZLgDd0MuAbLi3OV61GjeUOGl1Yv46Ve976Y0KzTA.jpg" width="100"/>
-        <div>
-         <h3 class="text-lg font-semibold">
-          Dr. John Doe
-         </h3>
-         <p class="text-gray-700">
-          Cardiologist
-         </p>
-         <p class="text-gray-500">
-          2 miles away
-         </p>
-        </div>
-       </div>
-       <div class="flex items-center p-4 border rounded-lg">
-        <img alt="Portrait of Dr. Jane Smith, a young female doctor with a friendly smile and a white coat" class="w-16 h-16 rounded-full mr-4" height="100" src="https://storage.googleapis.com/a1aa/image/7YjHsOiQRWpfbq599FEiBtOLQxxe0EfdYWPg93hAFqYroVmnA.jpg" width="100"/>
-        <div>
-         <h3 class="text-lg font-semibold">
-          Dr. Jane Smith
-         </h3>
-         <p class="text-gray-700">
-          Dermatologist
-         </p>
-         <p class="text-gray-500">
-          3 miles away
-         </p>
-        </div>
-       </div>
-       <div class="flex items-center p-4 border rounded-lg">
-        <img alt="Portrait of Dr. Emily Johnson, a middle-aged female doctor with curly hair and a white coat" class="w-16 h-16 rounded-full mr-4" height="100" src="https://storage.googleapis.com/a1aa/image/yPVyqGrXB0ZRNFAnOlDv0ktRcttxhglZIkupVIGJq5yFty8E.jpg" width="100"/>
-        <div>
-         <h3 class="text-lg font-semibold">
-          Dr. Emily Johnson
-         </h3>
-         <p class="text-gray-700">
-          Pediatrician
-         </p>
-         <p class="text-gray-500">
-          4 miles away
-         </p>
-        </div>
-       </div>
-       <div class="flex items-center p-4 border rounded-lg">
-        <img alt="Portrait of Dr. Michael Brown, a young male doctor with a stethoscope and a white coat" class="w-16 h-16 rounded-full mr-4" height="100" src="https://storage.googleapis.com/a1aa/image/efdFe3i3FZPfITIcBZSp7HGhqJgUW0gPHTeCeQHdHNMHFty8E.jpg" width="100"/>
-        <div>
-         <h3 class="text-lg font-semibold">
-          Dr. Michael Brown
-         </h3>
-         <p class="text-gray-700">
-          General Practitioner
-         </p>
-         <p class="text-gray-500">
-          5 miles away
-         </p>
-        </div>
-       </div>
-      </div>
-     </div>
-     <div class="bg-white p-4 rounded-lg shadow-md">
-      <h2 class="text-xl font-semibold mb-4">
-       Map
-      </h2>
-      <div class="h-96 bg-gray-200 rounded-lg">
-       <img alt="Map showing the locations of nearby doctors" class="w-full h-full object-cover rounded-lg" height="400" src="https://storage.googleapis.com/a1aa/image/HDfLLs5ewbsS0kzb1ilw3pz9N5zotLB58G74beLYOZ3loVmnA.jpg" width="600"/>
-      </div>
-     </div>
-    </div>
-   </div>
-  </div>
- </body>
-</html>
+</body>
