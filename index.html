@@ -1,79 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <!-- Viewport meta tag for proper mobile rendering -->
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Mobile-specific optimizations -->
-    <meta name="theme-color" content="#2563eb">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>MediConnect - Doctor Appointment Booking</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
-
-<body class="bg-gray-100 min-h-screen flex flex-col">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex-grow">
-        <!-- Existing content with enhanced responsive classes -->
-        <header class="flex flex-col sm:flex-row justify-between items-center py-4 space-y-4 sm:space-y-0">
-            <h1 class="text-xl sm:text-2xl font-bold text-center sm:text-left w-full">
-                Doctor Appointment Booking
-            </h1>
-            <nav class="w-full sm:w-auto">
-                <ul class="flex justify-center sm:justify-end space-x-4">
-                    <!-- Navigation items -->
-                </ul>
-            </nav>
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-8">
+        <header class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-blue-600">MediConnect</h1>
+            <p class="text-gray-600">Book Your Doctor Appointment Easily</p>
         </header>
 
-        <div class="flex flex-col lg:flex-row gap-4">
-            <!-- AI Assistant Section -->
-            <div class="w-full lg:w-1/3 bg-white p-4 rounded-lg shadow-md">
-                <div class="chat-container h-64 sm:h-96 overflow-y-auto">
-                    <!-- Chat messages -->
-                </div>
-                <div class="mt-4 flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
-                    <input 
-                        class="flex-grow p-2 border rounded-lg" 
-                        placeholder="Type your message..." 
-                        type="text" 
-                        id="user-input"
-                    />
-                    <button 
-                        class="w-full sm:w-auto bg-blue-500 text-white p-2 rounded-lg" 
-                        id="send-button">
-                        Send
-                    </button>
+        <div class="grid md:grid-cols-2 gap-6">
+            <!-- Doctors List -->
+            <div class="bg-white shadow-md rounded-lg p-6">
+                <h2 class="text-xl font-semibold mb-4">Available Doctors</h2>
+                <div id="doctors-list" class="space-y-4">
+                    <!-- Doctors will be dynamically added here -->
                 </div>
             </div>
 
-            <!-- Doctors and Map Section -->
-            <div class="w-full lg:w-2/3 space-y-4">
-                <!-- Doctors List with responsive cards -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
-                    <!-- Doctor cards with responsive layout -->
-                    <div class="flex items-center p-4 border rounded-lg">
-                        <img 
-                            class="w-12 h-12 sm:w-16 sm:h-16 rounded-full mr-4" 
-                            src="doctor-image.jpg" 
-                            alt="Doctor"
-                        />
-                        <div>
-                            <h3 class="text-base sm:text-lg font-semibold">Dr. Name</h3>
-                            <p class="text-sm text-gray-700">Specialization</p>
-                        </div>
+            <!-- Appointment Booking -->
+            <div class="bg-white shadow-md rounded-lg p-6">
+                <h2 class="text-xl font-semibold mb-4">Book Appointment</h2>
+                <form id="appointment-form" class="space-y-4">
+                    <div>
+                        <label class="block text-gray-700">Select Doctor</label>
+                        <select id="doctor-select" class="w-full p-2 border rounded-md">
+                            <option value="">Choose a Doctor</option>
+                        </select>
                     </div>
-                    <!-- More doctor cards -->
-                </div>
-
-                <!-- Responsive Map Section -->
-                <div class="bg-white p-4 rounded-lg shadow-md">
-                    <div class="h-64 sm:h-96 bg-gray-200 rounded-lg">
-                        <img 
-                            class="w-full h-full object-cover rounded-lg" 
-                            src="map-image.jpg" 
-                            alt="Location Map"
-                        />
+                    <div>
+                        <label class="block text-gray-700">Date</label>
+                        <input type="date" id="appointment-date" class="w-full p-2 border rounded-md" required>
                     </div>
-                </div>
+                    <div>
+                        <label class="block text-gray-700">Time</label>
+                        <input type="time" id="appointment-time" class="w-full p-2 border rounded-md" required>
+                    </div>
+                    <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600">
+                        Book Appointment
+                    </button>
+                </form>
             </div>
         </div>
     </div>
+
+    <script src="script.js"></script>
 </body>
+</html>
