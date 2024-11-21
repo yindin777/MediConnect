@@ -1,44 +1,24 @@
-// Initialize OpenStreetMap
-let map = L.map('map').setView([51.505, -0.09], 13);  // Default coordinates (London)
+// Initialize the map (OpenStreetMap using Leaflet)
+const map = L.map('map').setView([51.505, -0.09], 13); // Default center: London
 
-// Set up OpenStreetMap tiles
+// Set up OpenStreetMap layer
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
 }).addTo(map);
 
-// Example function to fetch available slots (replace with your API)
-const fetchAvailableSlots = async (date) => {
-    const response = await fetch(`https://whereisd.yindin777.workers.dev/slots?date=${date}`);
-    const slots = await response.json();
-    displaySlotsOnMap(slots);
-};
+// Example: Add a marker for a healthcare professional
+const marker = L.marker([51.505, -0.09]).addTo(map);
+marker.bindPopup('<b>Healthcare Professional</b><br>Location Info').openPopup();
 
-// Function to display slots on the map
-const displaySlotsOnMap = (slots) => {
-    slots.forEach(slot => {
-        const { latitude, longitude, professionalName } = slot;  // Example slot data
-        L.marker([latitude, longitude]).addTo(map)
-            .bindPopup(`<b>${professionalName}</b><br>Available Slot`);
-    });
-};
-
-// Call this function when a date is selected (for now, using today's date for demo)
-const today = new Date().toISOString().split('T')[0];
-fetchAvailableSlots(today);
-
-// Healthcare Professionals List (Dummy Data)
-const populateHealthcareProfiles = () => {
-    const profilesList = document.getElementById('professional-list');
-    const professionals = [
-        { name: 'Dr. John Doe', specialty: 'Dentist', location: 'New York' },
-        { name: 'Dr. Jane Smith', specialty: 'Chiropractor', location: 'Los Angeles' }
-    ];
-
-    professionals.forEach(prof => {
-        const li = document.createElement('li');
-        li.textContent = `${prof.name} - ${prof.specialty} (${prof.location})`;
-        profilesList.appendChild(li);
-    });
-};
-
-populateHealthcareProfiles();
+// You can replace the marker with dynamic data from your API
+// Example: Fetch healthcare professional data and add markers dynamically
+fetch('/api/healthcare-professionals')
+    .then(response => response.json())
+    .then(data => {
+        data.forEach(professional => {
+            L.marker([professional.latitude, professional.longitude])
+                .addTo(map)
+                .bindPopup(`<b>${professional.name}</b><br>${professional.specialty}`);
+        });
+    })
+    .catch(error => console.error('Error fetching data:', error));
