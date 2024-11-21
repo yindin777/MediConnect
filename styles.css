@@ -1,38 +1,18 @@
-/* Enhanced Responsive Styles */
-@media (max-width: 640px) {
-    body {
-        font-size: 14px;
-    }
+body {
+    font-family: 'Arial', sans-serif;
+}
 
+.doctor-card {
+    transition: transform 0.3s ease;
+}
+
+.doctor-card:hover {
+    transform: scale(1.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
     .container {
-        padding: 0.5rem;
-    }
-
-    .chat-container {
-        max-height: 300px;
-    }
-}
-
-/* Touch-friendly interactions */
-@media (hover: hover) {
-    button:hover {
-        opacity: 0.9;
-    }
-}
-
-/* Accessibility and Touch Improvements */
-button, input, a {
-    touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent;
-}
-
-/* Responsive Typography */
-html {
-    font-size: 16px;
-}
-
-@media screen and (max-width: 768px) {
-    html {
-        font-size: 14px;
+        padding: 1rem;
     }
 }
