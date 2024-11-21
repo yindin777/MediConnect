@@ -36,14 +36,14 @@ body {
     padding: 5px 10px;
 }
 
-/* Container for layout */
+/* Layout Container */
 #container {
     display: flex;
     flex-direction: column;
     height: 100%;
 }
 
-/* AI Chat Section (Top 30%) */
+/* AI Chat Section (30%) */
 #ai-chat {
     height: 30%;
     padding: 20px;
@@ -54,12 +54,12 @@ body {
 
 /* Map Section (50%) */
 #map-container {
-    height: 50%;
+    height: 50%; /* Ensuring map takes 50% */
     position: relative;
     background-color: #f0f0f0;
 }
 
-/* Healthcare Professional Profiles Section (30%) */
+/* Healthcare Profiles Section (30%) */
 #profiles {
     height: 30%;
     padding: 20px;
@@ -80,7 +80,7 @@ body {
     margin: 10px 0;
 }
 
-/* Responsiveness */
+/* Responsiveness for Larger Devices */
 @media (min-width: 768px) {
     #container {
         flex-direction: row;
@@ -93,7 +93,7 @@ body {
     
     #map-container {
         height: 100%;
-        width: 50%;
+        width: 50%; /* Map takes 50% of screen width */
     }
     
     #profiles {
@@ -102,14 +102,14 @@ body {
     }
 }
 
-/* Mobile responsiveness */
+/* Mobile Responsiveness */
 @media (max-width: 767px) {
     #container {
         flex-direction: column;
     }
 
     #map-container {
-        height: 50%;
+        height: 50%; /* Map takes 50% height */
     }
     
     #ai-chat {
