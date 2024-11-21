@@ -1,29 +1,34 @@
 import { serve } from '@cloudflare/workers-toolkit';
 
-// Example endpoint to fetch available slots from D1 database
+// Initialize the D1 database connection (make sure D1 is connected in your environment)
+const d1 = D1Database; // This assumes D1 database is already configured in your worker
+
+// Function to fetch available slots from D1 database based on a given date
 const getAvailableSlots = async (date) => {
-    const d1 = D1Database; // Use your D1 database connection here
-    const query = `SELECT * FROM slots WHERE date = ?`; // Modify query to suit your table structure
-    const result = await d1.prepare(query).bind(date).first();
-    return result.rows;
+    const query = `SELECT * FROM slots WHERE date = ?`; // Query for slots on the given date
+    const result = await d1.prepare(query).bind(date).all();  // Execute query and fetch rows
+    return result.rows;  // Return rows (slots) for the specified date
 };
 
-// Define Worker route to handle request for available slots
+// Worker to handle incoming requests and respond with available slots
 serve(async (req) => {
+    // Only handle GET requests
     if (req.method === 'GET') {
-        const url = new URL(req.url);
-        const date = url.searchParams.get('date'); // Assuming date query param
+        const url = new URL(req.url); // Get the request URL
+        const date = url.searchParams.get('date'); // Extract 'date' query parameter
 
-        // Return available slots as JSON
+        // If 'date' is provided, fetch and return available slots
         if (date) {
             const slots = await getAvailableSlots(date);
             return new Response(JSON.stringify(slots), {
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 'Content-Type': 'application/json' }, // Return response as JSON
             });
         }
 
-        return new Response('Please provide a date', { status: 400 });
+        // If 'date' is not provided, respond with an error message
+        return new Response('Please provide a date in the query parameters', { status: 400 });
     }
 
+    // Handle unsupported methods (only GET is allowed)
     return new Response('Method Not Allowed', { status: 405 });
 });
