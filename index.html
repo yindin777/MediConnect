@@ -3,33 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WhereIs - Find Available Slots</title>
-
-    <!-- Add Leaflet.js for OpenStreetMap -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-
-    <!-- Add Leaflet Control Geocoder for location search -->
-    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
-
-    <!-- Your custom CSS for map and layout -->
-    <link rel="stylesheet" href="style.css">
+    <title>Healthcare Appointment Booking</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Minimalist Navbar -->
-    <div class="navbar">
-        <div class="logo">WhereIs</div>
-        <div class="menu">
-            <a href="#home">Home</a>
-            <a href="#profile">Profile</a>
-            <a href="#appointments">Appointments</a>
+    <header>
+        <div class="logo">Healthcare Service</div>
+        <nav>
+            <ul>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#login">Login</a></li>
+            </ul>
+        </nav>
+        <div class="voice-search">
+            <button id="voiceSearchBtn">🎤</button>
         </div>
-    </div>
+    </header>
 
-    <!-- Map Container -->
-    <div id="map"></div>
+    <main>
+        <section class="hero">
+            <h1>Book Your Appointment</h1>
+            <input type="text" id="searchInput" placeholder="Find available slots...">
+            <button id="searchBtn">Search</button>
+        </section>
 
-    <!-- Optional: Add your custom JavaScript here -->
-    <script src="script.js"></script>
+        <div class="container">
+            <section id="appointment" class="appointment-section">
+                <h2>Book an Appointment</h2>
+                <div class="date-picker">
+                    <input type="date" id="appointmentDate">
+                    <select id="doctorSelect">
+                        <option value="">Select a Doctor</option>
+                        <option value="dr-smith">Dr. Smith</option>
+                        <option value="dr-jones">Dr. Jones</option>
+                    </select>
+                    <button id="bookBtn">Book Appointment</button>
+                </div>
+                <div id="availableSlots"></div>
+            </section>
+
+            <section class="map-section">
+                <h2>Find Nearby Clinics</h2>
+                <div id="map" class="map"></div>
+            </section>
+        </div>
+
+        <section id="services">
+            <h2>Our Services</h2>
+            <div class="service-card">General Checkup</div>
+            <div class="service-card">Dental Care</div>
+            <div class="service-card">Pediatrics</div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Healthcare Service. All rights reserved.</p>
+    </footer>
+
+    <script src="app.js"></script>
 </body>
 </html>
