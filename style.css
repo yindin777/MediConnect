@@ -52,9 +52,9 @@ body {
     overflow-y: auto;
 }
 
-/* Map Section (40%) */
+/* Map Section (50%) */
 #map-container {
-    height: 40%;
+    height: 50%;
     position: relative;
     background-color: #f0f0f0;
 }
@@ -93,11 +93,30 @@ body {
     
     #map-container {
         height: 100%;
-        width: 40%;
+        width: 50%;
     }
     
     #profiles {
         height: 100%;
         width: 30%;
+    }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 767px) {
+    #container {
+        flex-direction: column;
+    }
+
+    #map-container {
+        height: 50%;
+    }
+    
+    #ai-chat {
+        height: 30%;
+    }
+
+    #profiles {
+        height: 20%;
     }
 }
