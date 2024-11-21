@@ -1,48 +1,107 @@
-/* General layout */
-body, html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 }
 
-#map {
-  width: 100%;
-  height: calc(100% - 60px); /* Map will take up all available space minus navbar height */
+#menu {
+    background-color: #333;
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
-/* Minimalist Menu */
-.navbar {
-  background-color: #fff;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 60px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  z-index: 100;
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  box-sizing: border-box;
+#menu ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
-.navbar .logo {
-  font-size: 24px;
-  font-weight: bold;
+#menu ul li {
+    margin: 0 20px;
 }
 
-.navbar .menu {
-  display: flex;
-  gap: 15px;
+#menu ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 5px 10px;
 }
 
-.navbar .menu a {
-  text-decoration: none;
-  color: #333;
-  font-size: 16px;
-  font-weight: 600;
+#container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    height: 100%;
 }
 
-.navbar .menu a:hover {
-  color: #007bff;
+/* AI Chat Section (Top 30%) */
+#ai-chat {
+    height: 30%;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-bottom: 2px solid #ccc;
+    overflow-y: auto;
+}
+
+#chat-box {
+    height: 80%;
+    overflow-y: scroll;
+}
+
+/* Map Section (40%) */
+#map-container {
+    height: 40%;
+    position: relative;
+    background-color: #f0f0f0;
+}
+
+/* Healthcare Professional Profiles Section (30%) */
+#profiles {
+    height: 30%;
+    padding: 20px;
+    background-color: #e9e9e9;
+    overflow-y: auto;
+}
+
+#profiles h3 {
+    margin-top: 0;
+}
+
+#professional-list {
+    list-style: none;
+    padding: 0;
+}
+
+#professional-list li {
+    margin: 10px 0;
+}
+
+/* Responsiveness */
+@media (min-width: 768px) {
+    #container {
+        flex-direction: row;
+    }
+    
+    #ai-chat {
+        height: 100%;
+        width: 30%;
+    }
+    
+    #map-container {
+        height: 100%;
+        width: 40%;
+    }
+    
+    #profiles {
+        height: 100%;
+        width: 30%;
+    }
 }
