@@ -1,34 +1,42 @@
-import { serve } from '@cloudflare/workers-toolkit';
+// Initialize the map
+const map = L.map('map').setView([51.505, -0.09], 13); // Default view at London (change as needed)
 
-// Initialize the D1 database connection (make sure D1 is connected in your environment)
-const d1 = D1Database; // This assumes D1 database is already configured in your worker
+// Set up OpenStreetMap Tile Layer
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
 
-// Function to fetch available slots from D1 database based on a given date
+// Add Geosearch control for searching locations
+const geocoder = L.Control.Geocoder.nominatim();
+const searchControl = new L.Control.Geocoder({
+  geocoder: geocoder
+}).addTo(map);
+
+// Handle real-time location search
+searchControl.on('markgeocode', (e) => {
+  const latLng = e.geocode.center;
+  map.setView(latLng, 13); // Zoom in on the search result
+  L.marker(latLng).addTo(map).bindPopup('Location found').openPopup();
+});
+
+// Function to fetch available slots from Worker API
 const getAvailableSlots = async (date) => {
-    const query = `SELECT * FROM slots WHERE date = ?`; // Query for slots on the given date
-    const result = await d1.prepare(query).bind(date).all();  // Execute query and fetch rows
-    return result.rows;  // Return rows (slots) for the specified date
+  try {
+    const response = await fetch(`https://whereisd.yindin777.workers.dev/available-slots?date=${date}`);
+    const slots = await response.json();
+    updateMapWithSlots(slots);  // Function to display available slots as markers on the map
+  } catch (error) {
+    console.error('Error fetching slots:', error);
+  }
 };
 
-// Worker to handle incoming requests and respond with available slots
-serve(async (req) => {
-    // Only handle GET requests
-    if (req.method === 'GET') {
-        const url = new URL(req.url); // Get the request URL
-        const date = url.searchParams.get('date'); // Extract 'date' query parameter
+// Function to update the map with slot markers
+const updateMapWithSlots = (slots) => {
+  slots.forEach((slot) => {
+    const { lat, lon, description } = slot;
+    L.marker([lat, lon]).addTo(map).bindPopup(description);
+  });
+};
 
-        // If 'date' is provided, fetch and return available slots
-        if (date) {
-            const slots = await getAvailableSlots(date);
-            return new Response(JSON.stringify(slots), {
-                headers: { 'Content-Type': 'application/json' }, // Return response as JSON
-            });
-        }
-
-        // If 'date' is not provided, respond with an error message
-        return new Response('Please provide a date in the query parameters', { status: 400 });
-    }
-
-    // Handle unsupported methods (only GET is allowed)
-    return new Response('Method Not Allowed', { status: 405 });
-});
+// Example: Call the function to fetch slots for a specific date (this could be dynamic)
+getAvailableSlots('2024-11-20');
