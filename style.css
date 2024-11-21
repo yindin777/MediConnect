@@ -1,146 +1,39 @@
 /* General Styles */
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
+    font-family: Arial, sans-serif;
 }
 
 header {
-    background-color: #4CAF50;
-    color: white;
-    padding: 1em;
-    text-align: center;
-}
-
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-}
-
-nav li {
-    margin: 0 15px;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
+    /* Styles for header */
 }
 
 main {
-    margin: 20px;
+    /* Styles for main content */
 }
 
-section {
-    margin-bottom: 40px;
+/* Responsive Layout */
+@media (max-width: 768px) {
+    /* Styles for tablets and mobile devices */
 }
 
-h2 {
-    color: #333;
-}
-
-/* Map Styles */
-#map {
-    margin-top: 20px;
-}
-
-/* Service List Styles */
 .service-list {
     display: flex;
-    justify-content: space-around;
-}
-
-.service img {
-    width: 100px;
-    height: 100px;
-    margin-bottom: 10px;
-}
-
-/* Professional List Styles */
-#professional-list {
-    display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .professional-card {
-    width: 30%;
-    margin: 1.5%;
-    padding: 20px;
-    background-color: #f1f1f1;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    /* Styles for professional cards using Flexbox or Grid */
 }
 
-.professional-card img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin-bottom: 10px;
+/* Ensure map container is responsive */
+#map {
+    width: 100%;
+    height: 400px;
 }
 
-.professional-card h3 {
-    margin-top: 0;
-}
-
-/* Booking Form Styles */
-#booking-form {
-    display: flex;
-    flex-direction: column;
-}
-
-#booking-form label {
-    margin-top: 10px;
-}
-
-#booking-form input, #booking-form select, #booking-form textarea {
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-#booking-form button {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-#booking-form button:hover {
-    background-color: #45a049;
-}
-
-/* Contact Form Styles */
-#contact-form {
-    display: flex;
-    flex-direction: column;
-}
-
-#contact-form label {
-    margin-top: 10px;
-}
-
-#contact-form input, #contact-form textarea {
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-#contact-form button {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-#contact-form button:hover {
-    background-color: #45a049;
+/* Accessibility Styles */
+img {
+    alt: "Description";
 }
