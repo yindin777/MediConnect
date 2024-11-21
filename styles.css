@@ -1,18 +1,95 @@
+/* Base Styles */
 body {
     font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
 }
 
-.doctor-card {
-    transition: transform 0.3s ease;
+/* Professional Card Styles */
+.professional-card {
+    transition: all 0.3s ease;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 15px;
+    cursor: pointer;
 }
 
-.doctor-card:hover {
-    transform: scale(1.05);
+.professional-card:hover {
+    background-color: #f0f8ff;
+    transform: translateX(5px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-/* Responsive adjustments */
+/* Map Container Styles */
+#map-container {
+    height: 100%;
+    width: 100%;
+    min-height: 300px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Leaflet Popup Styles */
+.leaflet-popup-content {
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.leaflet-popup-content b {
+    color: #2c3e50;
+}
+
+/* Responsive Adjustments */
 @media (max-width: 768px) {
-    .container {
-        padding: 1rem;
+    #map-container {
+        height: 250px;
     }
+
+    .professional-card {
+        padding: 10px;
+    }
+}
+
+/* Search Input Styles */
+#search-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+#search-input:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52,152,219,0.5);
+}
+
+/* Additional Hover and Active States */
+.professional-card:active {
+    background-color: #e6f2ff;
+    transform: scale(0.98);
+}
+
+/* Scrollbar Styles for List */
+#professionals-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+#professionals-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+#professionals-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+#professionals-list::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+#professionals-list::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
