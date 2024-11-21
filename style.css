@@ -6,8 +6,8 @@ body, html {
 }
 
 #map {
-  width: 50%;  /* Map takes up 50% of the screen width */
-  height: 100vh; /* Full height of the screen */
+  width: 100%;  /* Map takes up 50% of the screen width */
+  height: 50vh; /* Full height of the screen */
   margin: 0 auto;  /* Center the map horizontally */
 }
 
