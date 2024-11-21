@@ -1,115 +1,48 @@
-/* Basic Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
-    margin: 0;
-    padding: 20px;
-}
-
-h1 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-header {
-    background-color: #007bff;
-    padding: 10px;
-    text-align: center;
-}
-
-.menu {
-    display: flex;
-    justify-content: center;
-}
-
-.menu-item {
-    background: #fff;
-    color: #007bff;
-    padding: 10px 20px;
-    margin: 0 10px;
-    border: 1px solid #007bff;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.menu-item:hover {
-    background-color: #0056b3;
-    color: white;
-}
-
-.calendar-container {
-    margin: 20px auto;
-    text-align: center;
-}
-
-input[type="date"] {
-    padding: 10px;
-    margin: 10px 0;
-    font-size: 1em;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-button {
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-#slots-container {
-    margin-top: 20px;
-}
-
-.slot {
-    background-color: #fff;
-    padding: 15px;
-    margin-bottom: 15px;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-}
-
-.slot p {
-    margin: 5px 0;
-}
-
-.slot button {
-    background-color: #28a745;
-    border: none;
-    padding: 10px;
-    color: white;
-    cursor: pointer;
-    font-size: 1em;
-    border-radius: 5px;
-}
-
-.slot button:hover {
-    background-color: #218838;
-}
-
-#error-message {
-    color: red;
-    text-align: center;
-}
-
-#map-container {
-    margin-top: 20px;
+/* General layout */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 
 #map {
-    height: 400px;
-    background-color: #eaeaea;
+  width: 100%;
+  height: calc(100% - 60px); /* Adjust map size to fill the screen minus the navbar height */
+}
+
+/* Minimalist Menu */
+.navbar {
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.navbar .logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.navbar .menu {
+  display: flex;
+  gap: 15px;
+}
+
+.navbar .menu a {
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.navbar .menu a:hover {
+  color: #007bff;
 }
