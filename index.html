@@ -3,47 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Healthcare Appointment</title>
+    <title>Healthcare Map</title>
     <link rel="stylesheet" href="styles.css">
-    <!-- Include Leaflet.js -->
+    <!-- Include Leaflet.js (for OpenStreetMap) -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 </head>
 <body>
-    <!-- Top Menu -->
-    <nav id="menu">
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Appointments</a></li>
-        </ul>
-    </nav>
 
-    <!-- Container for layout -->
+    <!-- Menu Bar -->
+    <div id="menu">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#profile">Profile</a></li>
+            <li><a href="#appointments">Appointments</a></li>
+        </ul>
+    </div>
+
+    <!-- Layout Container -->
     <div id="container">
-        <!-- AI Search Assistant (30% of screen) -->
+        <!-- AI Chat Section -->
         <div id="ai-chat">
             <h2>AI Search Assistant</h2>
-            <div id="chat-box">
-                <!-- Chat content will be integrated here later -->
-            </div>
+            <p>Your AI assistant will be here...</p>
         </div>
 
-        <!-- Map Section (50% of screen) -->
+        <!-- Map Section -->
         <div id="map-container">
-            <div id="map" style="height: 100%;"></div> <!-- Map will render here -->
+            <div id="map"></div>
         </div>
 
-        <!-- Healthcare Professional Profiles (30% of screen) -->
+        <!-- Healthcare Professionals Profiles -->
         <div id="profiles">
             <h3>Available Healthcare Professionals</h3>
             <ul id="professional-list">
-                <!-- List of healthcare professionals will be populated here -->
+                <!-- List of Healthcare Professionals will be inserted dynamically here -->
             </ul>
         </div>
     </div>
 
+    <!-- Include Custom Script -->
     <script src="script.js"></script>
-    <!-- Include Leaflet.js script -->
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 </body>
 </html>
