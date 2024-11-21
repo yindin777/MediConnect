@@ -1,20 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MediConnect</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <!-- Button/Menu Section -->
-  <div id="menu">
-    <button>Example Button</button>
-  </div>
+/* General layout */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
 
-  <!-- Map Section -->
-  <div id="map"></div>
+/* Menu or button section at the top */
+#menu {
+  width: 100%;   /* Full width of the screen */
+  height: 50%;   /* Top 50% of the viewport */
+  display: flex; /* Align content */
+  justify-content: center;
+  align-items: center;
+  background-color: #f4f4f4; /* Light background color */
+}
 
-  <script src="script.js"></script>
-</body>
-</html>
+/* Map section at the bottom */
+#map {
+  width: 100%;   /* Full width of the screen */
+  height: 50%;   /* Bottom 50% of the viewport */
+  margin: 0;     /* No margin */
+}
