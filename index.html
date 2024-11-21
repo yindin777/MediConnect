@@ -3,54 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Whereis - Appointment Booking</title>
+    <title>WhereIs - Find Available Slots</title>
+
+    <!-- Add Leaflet.js for OpenStreetMap -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <!-- Add Leaflet Control Geocoder for location search -->
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
+    <!-- Your custom CSS for map and layout -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
+    <!-- Minimalist Navbar -->
+    <div class="navbar">
+        <div class="logo">WhereIs</div>
         <div class="menu">
-            <button class="menu-item" id="home-btn">Home</button>
-            <button class="menu-item" id="profile-btn">Profile</button>
-            <button class="menu-item" id="appointments-btn">My Appointments</button>
+            <a href="#home">Home</a>
+            <a href="#profile">Profile</a>
+            <a href="#appointments">Appointments</a>
         </div>
-    </header>
+    </div>
 
-    <main>
-        <div class="content">
-            <div class="calendar-container">
-                <label for="appointment-date">Choose Appointment Date</label>
-                <input type="date" id="appointment-date" name="appointment-date">
-                <button id="search-btn">Search Available Slots</button>
-            </div>
+    <!-- Map Container -->
+    <div id="map"></div>
 
-            <div id="slots-container">
-                <!-- Available slots will be dynamically displayed here -->
-            </div>
-
-            <div id="error-message" style="display:none;">
-                <p>No available slots for the selected date. Please try again later.</p>
-            </div>
-        </div>
-
-        <div id="map-container">
-            <!-- Map for showing available slots -->
-            <div id="map"></div>
-        </div>
-    </main>
-
-    <footer>
-        <p>&copy; 2024 Whereis - All rights reserved</p>
-    </footer>
-
-    <script src="worker.js"></script>
-    <script src="app.js"></script>
+    <!-- Optional: Add your custom JavaScript here -->
+    <script src="script.js"></script>
 </body>
 </html>
-
-
-<!-- Add Leaflet.js CDN -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-
-<!-- Add Leaflet Geosearch Plugin CDN -->
-<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
