@@ -1,48 +1,75 @@
-// Initialize map
-let map = L.map('map').setView([51.505, -0.09], 13);
+// Initialize Google Map
+function initMap() {
+    // Set default location (e.g., New York)
+    const defaultLocation = { lat: 40.7128, lng: -74.0060 };
+    const map = new google.maps.Map(document.getElementById('map'), {
+        center: defaultLocation,
+        zoom: 12
+    });
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '© OpenStreetMap contributors'
-}).addTo(map);
+    // Add markers for healthcare professionals (dummy data)
+    const professionals = [
+        { name: 'Dr. John Doe', location: { lat: 40.72, lng: -74.01 }, available: true },
+        { name: 'Nurse Jane Smith', location: { lat: 40.73, lng: -74.02 }, available: true },
+        { name: 'Dr. Emily Johnson', location: { lat: 40.74, lng: -74.03 }, available: false },
+    ];
 
-// Fetch services from Cloudflare Worker
-async function fetchServices() {
-    try {
-        const response = await fetch('https://your-worker-url.workers.dev/services');
-        const services = await response.json();
-        displayServices(services);
-        addServiceMarkers(services);
-    } catch (error) {
-        console.error('Error fetching services:', error);
-    }
-}
-
-// Display services in results section
-function displayServices(services) {
-    const resultsContainer = document.getElementById('serviceResults');
-    resultsContainer.innerHTML = services.map(service => `
-        <div class="service-card">
-            <h3>${service.name}</h3>
-            <p>${service.description}</p>
-            <button>Book Now</button>
-        </div>
-    `).join('');
-}
-
-// Add markers for services on map
-function addServiceMarkers(services) {
-    services.forEach(service => {
-        L.marker([service.latitude, service.longitude])
-            .addTo(map)
-            .bindPopup(`
-                <b>${service.name}</b><br>
-                ${service.description}
-            `);
+    professionals.forEach(professional => {
+        const marker = new google.maps.Marker({
+            position: professional.location,
+            map: map,
+            title: professional.name + (professional.available ? ' - Available' : ' - Not Available'),
+            icon: professional.available ? 'https://maps.google.com/mapfiles/ms/icons/green-dot.png' : 'https://maps.google.com/mapfiles/ms/icons/red-dot.png'
+        });
     });
 }
 
-// Event Listeners
-document.getElementById('servicesBtn').addEventListener('click', fetchServices);
+// Fetch available professionals and display them
+function fetchProfessionals() {
+    // Simulate API call with dummy data
+    const professionals = [
+        { name: 'Dr. John Doe', specialty: 'General Practitioner', rating: 4.5, available: true },
+        { name: 'Nurse Jane Smith', specialty: 'Nurse', rating: 4.8, available: true },
+        { name: 'Dr. Emily Johnson', specialty: 'Dermatologist', rating: 4.2, available: false },
+    ];
 
-// Initial load
-fetchServices();
+    const professionalList = document.getElementById('professional-list');
+    professionalList.innerHTML = '';
+
+    professionals.forEach(professional => {
+        if (professional.available) {
+            const card = document.createElement('div');
+            card.className = 'professional-card';
+            card.innerHTML = `
+                <img src="images/doctor.png" alt="${professional.name}">
+                <h3>${professional.name}</h3>
+                <p>${professional.specialty}</p>
+                <p>Rating: ${professional.rating}</p>
+                <button onclick="bookProfessional('${professional.name}')">Book Now</button>
+            `;
+            professionalList.appendChild(card);
+        }
+    });
+}
+
+// Book a professional
+function bookProfessional(name) {
+    alert(`Booking request sent to ${name}!`);
+}
+
+// Event listener for search button
+document.getElementById('search-btn').addEventListener('click', function() {
+    const locationInput = document.getElementById('search-input').value;
+    if (locationInput) {
+        // Here you would geocode the location input and center the map on the new location
+        alert(`Searching for professionals near ${locationInput}...`);
+        fetchProfessionals();
+    } else {
+        alert('Please enter a location.');
+    }
+});
+
+// Initialize the map and fetch professionals on page load
+window.onload = function() {
+    fetchProfessionals();
+};
