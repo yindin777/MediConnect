@@ -26,7 +26,7 @@ const displaySlotsOnMap = (slots) => {
 const today = new Date().toISOString().split('T')[0];
 fetchAvailableSlots(today);
 
-// Healthcare Professionals List
+// Healthcare Professionals List (Dummy Data)
 const populateHealthcareProfiles = () => {
     const profilesList = document.getElementById('professional-list');
     const professionals = [
