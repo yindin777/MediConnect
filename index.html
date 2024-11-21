@@ -3,52 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MediConnect - Doctor Appointment Booking</title>
+    <title>Healthcare Professional Finder</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+        }
+
+        .professional-card {
+            transition: background-color 0.3s ease;
+        }
+
+        .professional-card:hover {
+            background-color: #f0f8ff;
+        }
+
+        #map-container {
+            height: 100%;
+            width: 100%;
+        }
+
+        .leaflet-popup-content {
+            font-size: 14px;
+        }
+    </style>
 </head>
-<body class="bg-gray-100">
-    <div class="container mx-auto px-4 py-8">
-        <header class="text-center mb-8">
-            <h1 class="text-3xl font-bold text-blue-600">MediConnect</h1>
-            <p class="text-gray-600">Book Your Doctor Appointment Easily</p>
-        </header>
-
-        <div class="grid md:grid-cols-2 gap-6">
-            <!-- Doctors List -->
-            <div class="bg-white shadow-md rounded-lg p-6">
-                <h2 class="text-xl font-semibold mb-4">Available Doctors</h2>
-                <div id="doctors-list" class="space-y-4">
-                    <!-- Doctors will be dynamically added here -->
-                </div>
+<body class="bg-gray-100 h-screen flex flex-col">
+    <div class="grid grid-rows-3 h-full">
+        <!-- Top Section: Nearest Professional -->
+        <div id="nearest-professional" class="row-span-1 bg-white shadow-md p-4">
+            <h2 class="text-xl font-bold">Nearest Healthcare Professional</h2>
+            <div id="nearest-professional-details" class="mt-2">
+                <!-- Nearest professional details will show here -->
             </div>
+        </div>
 
-            <!-- Appointment Booking -->
-            <div class="bg-white shadow-md rounded-lg p-6">
-                <h2 class="text-xl font-semibold mb-4">Book Appointment</h2>
-                <form id="appointment-form" class="space-y-4">
-                    <div>
-                        <label class="block text-gray-700">Select Doctor</label>
-                        <select id="doctor-select" class="w-full p-2 border rounded-md">
-                            <option value="">Choose a Doctor</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-gray-700">Date</label>
-                        <input type="date" id="appointment-date" class="w-full p-2 border rounded-md" required>
-                    </div>
-                    <div>
-                        <label class="block text-gray-700">Time</label>
-                        <input type="time" id="appointment-time" class="w-full p-2 border rounded-md" required>
-                    </div>
-                    <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600">
-                        Book Appointment
-                    </button>
-                </form>
+        <!-- Middle Section: Search Results List -->
+        <div class="row-span-1 bg-gray-100 p-4 overflow-y-auto">
+            <input type="text" id="search-input" class="w-full p-2 mb-4 border rounded" placeholder="Search doctors, dentists...">
+            <div id="professionals-list">
+                <!-- Professionals will be dynamically populated -->
             </div>
+        </div>
+
+        <!-- Bottom Section: OpenStreetMap -->
+        <div class="row-span-1 bg-white">
+            <div id="map-container" class="h-full"></div>
         </div>
     </div>
 
-    <script src="script.js"></script>
-</body>
-</html>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        // Professional data
+        const professionals = [
+            {
+                id: 1,
+                name: "Dr. Sarah Johnson",
+                specialty: "Dentist",
+                rating: 4.7,
+                distance: "2.3 miles",
+                location: {
+                    lat: 40.7128,
+                    lng: -74.0060
+                }
+            },
+            {
+                id: 2,
+                name: "Dr. Michael Chen
