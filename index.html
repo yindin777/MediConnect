@@ -3,97 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <title>Healthcare Professional Availability</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <!-- Include Map API (e.g., Google Maps) -->
     <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
 </head>
 <body>
-
+    <!-- Header and Navigation -->
     <header>
-        <h1>Healthcare Professional Availability</h1>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+        <!-- Logo and Navigation Links -->
     </header>
 
+    <!-- Main Content -->
     <main>
+        <!-- Section for finding professionals -->
         <section id="home">
-            <h2>Find a Healthcare Professional Near You</h2>
-            <div id="location-input">
-                <input type="text" id="search-input" placeholder="Enter your location">
-                <button id="search-btn">Search</button>
-            </div>
-            <div id="map" style="width: 100%; height: 400px;"></div>
+            <!-- Search input and map container -->
+            <div id="map" style="width:100%; height:400px;"></div>
         </section>
 
+        <!-- Services Offered -->
         <section id="services">
-            <h2>Services Offered</h2>
             <div class="service-list">
-                <div class="service">
-                    <img src="images/doctor.png" alt="Doctor">
-                    <h3>General Practitioners</h3>
-                </div>
-                <div class="service">
-                    <img src="images/nurse.png" alt="Nurse">
-                    <h3>Nurses</h3>
-                </div>
-                <div class="service">
-                    <img src="images/specialist.png" alt="Specialist">
-                    <h3>Specialists</h3>
-                </div>
+                <!-- Service cards with images and descriptions -->
             </div>
         </section>
 
+        <!-- Available Professionals -->
         <section id="availability">
-            <h2>Available Professionals Near You</h2>
             <div id="professional-list">
-                <!-- Professionals will be listed here -->
+                <!-- Professional cards with images, names, and ratings -->
             </div>
         </section>
 
+        <!-- Booking Form -->
         <section id="booking">
-            <h2>Book a Healthcare Professional</h2>
-            <form id="booking-form">
-                <label for="professional-select">Choose a Professional:</label>
-                <select id="professional-select">
-                    <!-- Options will be populated dynamically -->
-                </select>
-                <label for="date-select">Select Date:</label>
-                <input type="date" id="date-select">
-                <label for="time-select">Select Time:</label>
-                <input type="time" id="time-select">
-                <button type="submit">Book Now</button>
-            </form>
+            <!-- Form for selecting professional, date, time, and booking -->
         </section>
 
+        <!-- About and Contact Sections -->
         <section id="about">
-            <h2>About Us</h2>
-            <p>We are a platform connecting you with healthcare professionals in real-time.</p>
+            <!-- About us content -->
         </section>
-
         <section id="contact">
-            <h2>Contact Us</h2>
-            <form id="contact-form">
-                <label for="name">Name:</label>
-                <input type="text" id="name" required>
-                <label for="email">Email:</label>
-                <input type="email" id="email" required>
-                <label for="message">Message:</label>
-                <textarea id="message" rows="5" required></textarea>
-                <button type="submit">Send</button>
-            </form>
+            <!-- Contact form with input fields and submit button -->
         </section>
     </main>
 
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2023 Healthcare Professional Availability. All rights reserved.</p>
+        <!-- Copyright information -->
     </footer>
 
+    <!-- JavaScript for interactivity -->
     <script src="script.js"></script>
 </body>
 </html>
