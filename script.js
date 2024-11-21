@@ -1,11 +1,12 @@
 // Initialize OpenStreetMap
 let map = L.map('map').setView([51.505, -0.09], 13);  // Default coordinates (London)
 
+// Set up OpenStreetMap tiles
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
-// Function to fetch available slots (use the Worker API)
+// Example function to fetch available slots (replace with your API)
 const fetchAvailableSlots = async (date) => {
     const response = await fetch(`https://whereisd.yindin777.workers.dev/slots?date=${date}`);
     const slots = await response.json();
@@ -21,12 +22,11 @@ const displaySlotsOnMap = (slots) => {
     });
 };
 
-// Call this function when a date is selected
-// For now, we'll use today's date for demo
+// Call this function when a date is selected (for now, using today's date for demo)
 const today = new Date().toISOString().split('T')[0];
 fetchAvailableSlots(today);
 
-// UI for Healthcare Professionals
+// Healthcare Professionals List
 const populateHealthcareProfiles = () => {
     const profilesList = document.getElementById('professional-list');
     const professionals = [
