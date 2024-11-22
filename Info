@@ -1,1 +1,14 @@
-
+whereis/
+│
+├── public/
+│   ├── index.html
+│   ├── styles.css
+│   └── app.js
+│
+├── src/
+│   ├── worker.js
+│   └── ai-helper.js
+│
+├── wrangler.toml
+├── package.json
+└── README.md
